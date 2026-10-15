@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Yume Ramen</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Yume Ramen — rich broths, house noodles. Order online for pickup at Freehold or Quaker Bridge Mall, New Jersey.">
+<meta property="og:title" content="Yume Ramen">
+<meta property="og:description" content="Dream bowls. Order online at Freehold or Quaker Bridge Mall.">
+<meta name="theme-color" content="#4B2A8A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%234B2A8A'/%3E%3Ctext x='32' y='46' font-size='40' text-anchor='middle' fill='%23F7C948' font-family='sans-serif' font-weight='700'%3E%E5%A4%A2%3C/text%3E%3C/svg%3E">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Archivo:wght@400;600;700&display=swap">
+</head>
+<body>
+<style>
+/* Layout: full-bleed purple hero, cream body, sections as wide bands; menu is a tabbed board. */
+:root{
+  --bg:#FFF3C4; --fg:#2A1650; --muted:#5B4A86; --card:#FFFFFF;
+  --purple:#4B2A8A; --purple-ink:#2A1650; --yellow:#F7C948; --cream:#FFF3C4; --coral:#F26B5B;
+  --line:#2A1650; --btn-fg:#2A1650;
+  --display:'Bricolage Grotesque',system-ui,sans-serif; --body:'Archivo',system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#1C1738; --fg:#FFF3C4; --muted:#C9BFE8; --card:#2A1650; --purple:#3B2170; --purple-ink:#15102B; --line:#F7C948; --btn-fg:#2A1650; color-scheme:dark } }
+:root[data-theme="dark"]{ --bg:#1C1738; --fg:#FFF3C4; --muted:#C9BFE8; --card:#2A1650; --purple:#3B2170; --purple-ink:#15102B; --line:#F7C948; --btn-fg:#2A1650; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5;margin:0}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-0.02em;line-height:1;margin:0;text-wrap:balance}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--purple);color:var(--cream);border-bottom:4px solid var(--yellow)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--yellow);font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-0.02em}
+.brand .k{color:var(--cream);font-size:26px;line-height:1}
+.nav{display:flex;gap:18px;font-size:13px;font-weight:600}
+.nav a{text-decoration:none;color:var(--cream);opacity:.9}
+.nav a:hover,.nav a:focus-visible{opacity:1;text-decoration:underline;text-underline-offset:4px}
+@media (max-width:640px){.nav{display:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--yellow);color:var(--btn-fg);font-family:var(--display);font-weight:800;font-size:15px;padding:10px 18px;border-radius:999px;text-decoration:none;border:3px solid var(--btn-fg);min-height:44px;white-space:nowrap}
+.btn:hover,.btn:focus-visible{background:var(--cream);outline:none}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--line)}
+.btn.ghost:hover{background:var(--yellow);color:#2A1650}
+.btn.soon{background:transparent;color:var(--muted);border-style:dashed;cursor:default}
+
+/* hero */
+.hero{background:var(--purple);color:var(--cream);border-bottom:8px solid var(--yellow);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;padding-block:56px 48px}
+@media (max-width:760px){.hero .wrap{grid-template-columns:1fr;padding-block:40px 36px}}
+.hero h1{font-size:clamp(56px,10vw,124px);color:var(--yellow);line-height:.86}
+.hero p{font-size:18px;max-width:34ch;margin:18px 0 0;color:var(--cream)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.kanji{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.kanji .glyph{font-family:var(--display);font-weight:800;font-size:clamp(140px,28vw,260px);line-height:.9;color:var(--cream)}
+.kanji .cap{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--yellow);font-weight:700}
+.steam{display:flex;gap:18px;justify-content:center;height:34px}
+.steam i{display:block;width:6px;height:28px;border-radius:6px;background:var(--yellow);opacity:.75;animation:steam 2.6s ease-in-out infinite}
+.steam i:nth-child(2){animation-delay:.5s}.steam i:nth-child(3){animation-delay:1s}
+@keyframes steam{0%{transform:translateY(8px) scaleY(.7);opacity:0}40%{opacity:.8}100%{transform:translateY(-14px) scaleY(1.1);opacity:0}}
+@media (prefers-reduced-motion:reduce){.steam i{animation:none;opacity:.6}}
+
+/* sections */
+section{padding-block:48px}
+.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.sec-head h2{font-size:clamp(28px,4vw,40px)}
+.sec-head .rule{flex:1;height:4px;background:var(--purple);border-radius:2px}
+:root[data-theme="dark"] .sec-head .rule{background:var(--yellow)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .sec-head .rule{background:var(--yellow)}}
+.sec-head .eyebrow{color:var(--muted)}
+
+/* locations */
+.locs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:720px){.locs{grid-template-columns:1fr}}
+.loc{background:var(--card);border:3px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.loc h3{font-size:26px}
+.loc .addr{margin:0;line-height:1.45}
+.loc .addr a{color:var(--muted);text-decoration:none}
+.loc .addr a:hover{text-decoration:underline}
+.loc .hours{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:14px;font-variant-numeric:tabular-nums}
+.loc .hours b{font-weight:700}
+.loc .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:auto;padding-top:6px}
+.pill{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--yellow);color:#2A1650}
+.note{font-size:12.5px;color:var(--muted);margin:0}
+.ph{font-weight:600}
+
+/* menu */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tab{font-family:var(--display);font-weight:800;font-size:15px;padding:9px 16px;border-radius:999px;border:3px solid var(--line);background:transparent;color:var(--fg);cursor:pointer;min-height:44px}
+.tab[aria-selected="true"]{background:var(--yellow);color:#2A1650;border-color:#2A1650}
+.tab:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+.panel{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:900px){.panel{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.panel{grid-template-columns:1fr}}
+.item{background:var(--card);border:3px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:5px;min-width:0}
+.item .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.item .nm{font-family:var(--display);font-weight:800;font-size:18px;line-height:1.05}
+.item .pr{font-family:var(--display);font-weight:800;font-size:18px;color:var(--purple);white-space:nowrap;font-variant-numeric:tabular-nums}
+:root[data-theme="dark"] .item .pr{color:var(--yellow)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .item .pr{color:var(--yellow)}}
+.item .tag{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.item .ds{font-size:13.5px;line-height:1.4}
+.item.sig{border-color:var(--yellow);box-shadow:0 0 0 3px var(--line) inset}
+.menu-foot{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:16px;font-size:12.5px;color:var(--muted)}
+.addons{margin-top:22px;background:var(--card);border:3px solid var(--line);border-radius:14px;padding:16px 18px}
+.addons h3{font-size:18px;margin-bottom:10px}
+.addons .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px 22px;font-size:13.5px;font-weight:600}
+@media (max-width:760px){.addons .grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.addons .grid div{display:flex;justify-content:space-between;gap:8px;font-variant-numeric:tabular-nums}
+
+/* story */
+.story{background:var(--purple);color:var(--cream);border-top:6px solid var(--yellow);border-bottom:6px solid var(--yellow)}
+.story .wrap{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center}
+@media (max-width:640px){.story .wrap{grid-template-columns:1fr}}
+.story .big{font-family:var(--display);font-weight:800;font-size:120px;line-height:1;color:var(--yellow)}
+.story h2{font-size:clamp(26px,4vw,36px);color:var(--yellow)}
+.story p{max-width:60ch;margin:12px 0 0;font-size:17px}
+
+/* visit */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:720px){.visit{grid-template-columns:1fr}}
+.visit .box{border:3px solid var(--line);border-radius:14px;padding:18px 20px;background:var(--card)}
+.visit h3{font-size:18px;margin-bottom:8px}
+.visit p{margin:0;font-size:14px;line-height:1.5}
+footer{background:var(--purple-ink);color:var(--cream);padding-block:26px;font-size:12.5px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+footer a{color:var(--yellow)}
+.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:16px;background:var(--yellow);color:#2A1650;padding:8px 12px;z-index:20}
+</style>
+
+<a class="skip" href="#order">Skip to ordering</a>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="k">夢</span>YUME RAMEN</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#order">Order</a><a href="#menu">Menu</a><a href="#story">Story</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="btn" href="#order">Order online</a>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow" style="color:var(--yellow)">Freehold · Quaker Bridge Mall</div>
+      <h1>Dream<br>bowls.</h1>
+      <p>Rich broths simmered all day, noodles made to our spec, and a seat at the counter whenever you need one. Two New Jersey locations, one bowl at a time.</p>
+      <div class="cta">
+        <a class="btn" href="#order">Order online</a>
+        <a class="btn ghost" style="color:var(--cream);border-color:var(--cream)" href="#menu">See the menu</a>
+      </div>
+    </div>
+    <div class="kanji" aria-hidden="true">
+      <div class="steam"><i></i><i></i><i></i></div>
+      <div class="glyph">夢</div>
+      <div class="cap">yume · dream</div>
+    </div>
+  </div>
+</div>
+
+<section id="order">
+  <div class="wrap">
+    <div class="sec-head"><h2>Order</h2><div class="rule"></div><span class="eyebrow">Pickup · delivery</span></div>
+    <div class="locs" id="locs"></div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head"><h2>Menu</h2><div class="rule"></div><span class="eyebrow">Same menu, both locations</span></div>
+    <div class="tabs" role="tablist" aria-label="Menu sections" id="tabs"></div>
+    <div class="panel" id="panel" role="tabpanel"></div>
+    <div class="addons" id="addons">
+      <h3>Add-ons · to any bowl</h3>
+      <div class="grid" id="addon-grid"></div>
+    </div>
+    <div class="menu-foot">
+      <span>Gluten-free: swap noodles for rice</span><span>Vegan: swap to kale noodles</span><span>spicy = chili</span><span>**cured with pork</span>
+    </div>
+  </div>
+</section>
+
+<section id="story" class="story">
+  <div class="wrap">
+    <div class="big" aria-hidden="true">夢</div>
+    <div>
+      <div class="eyebrow">Our name</div>
+      <h2>Yume means dream.</h2>
+      <p>We're a New Jersey family of restaurants, and ramen is the bowl we grew up chasing — the one you think about on the drive home. Organic chicken broths, certified-humane pork, house-spec noodles, and a kitchen that makes the fried chicken, the dumplings and the broth every single day. Pull up a stool. Slurp loudly.</p>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head"><h2>Visit</h2><div class="rule"></div><span class="eyebrow">Hours · parking · allergies</span></div>
+    <div class="visit">
+      <div class="box">
+        <h3>Getting here</h3>
+        <p><b>Freehold</b> — downtown on West Main Street; street parking and the municipal lots on Court Street.<br><br><b>Quaker Bridge</b> — inside Quaker Bridge Mall off US-1, Lawrence Township; free mall parking, enter by the center court.</p>
+      </div>
+      <div class="box">
+        <h3>Food allergy notice</h3>
+        <p>Our kitchen handles wheat (gluten), soy, egg, milk, fish, shellfish, sesame, peanuts and tree nuts, and dishes are prepared in shared equipment and fryers. We can't guarantee any item is free of any allergen, including items marked gluten-free or vegan. Tell us about any allergy before ordering and we'll do our best; cross-contact is possible. Consuming raw or undercooked eggs, seafood or meat may increase your risk of foodborne illness.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> Yume Ramen · Hungry Trio Hospitality</span>
+    <span>Freehold, NJ · Lawrence Township, NJ</span>
+  </div>
+</footer>
+
+<script>
+// ===== EDIT HERE: ordering links, hours, phones =====
+const LOCATIONS = [
+  {
+    name: "Freehold",
+    addr: ["5 West Main Street", "Freehold, NJ 07728"],
+    map: "https://www.google.com/maps/search/?api=1&query=5+West+Main+Street+Freehold+NJ+07728",
+    phone: "",                 // e.g. "(732) 555-0100"
+    order: "",                 // Clover online-ordering link
+    orderVia: "Clover",
+    hours: []                  // e.g. [["Mon–Thu","11:30 AM – 9:30 PM"],["Fri–Sat","11:30 AM – 10:00 PM"],["Sun","12:00 – 9:00 PM"]]
+  },
+  {
+    name: "Quaker Bridge Mall",
+    addr: ["3320 US Route 1, Unit 144", "Lawrence Township, NJ 08648"],
+    map: "https://www.google.com/maps/search/?api=1&query=Quaker+Bridge+Mall+3320+US-1+Lawrence+Township+NJ",
+    phone: "",
+    order: "",                 // Square online-ordering link
+    orderVia: "Square",
+    hours: []
+  }
+];
+// ===================================================
+
+const MENU = {
+  "Ramen": [
+    ["The Yume","Rich pork bone broth, shoyu tare, braised pork belly, jammy egg, wood ear, nori, scallion · black garlic oil 19 · black truffle butter & sweet corn 20","18","signature · pork",1],
+    ["Seafood Ramen","Seafood broth folded with house miso, jammy egg, wood ear, nori, scallion · your choice of shrimp or crab","20","signature · seafood",1],
+    ["Wagyu Ramen","Premium wagyu beef, shabu-style, in a seasoned beef & dashi broth, jammy egg, bamboo, scallion","24","signature · beef",1],
+    ["Fire Miso","House chili-miso in pork broth, braised pork belly, king trumpet mushrooms, jammy egg, wood ear, nori, scallion","18","pork · spicy"],
+    ["Shoyu","Clear chicken broth, soy tare, jammy egg, bamboo, nori, scallion · chicken 17 · pork 18","17 / 18","chicken or pork"],
+    ["Shio","Clear chicken broth, sea salt tare, jammy egg, bamboo, nori, scallion · chicken 17 · pork 18","17 / 18","chicken or pork"],
+    ["Creamy Chicken","Slow-simmered, silky chicken broth, braised chicken, jammy egg, wood ear, nori, scallion","18","chicken"],
+    ["Garden Fire","Chili-miso in vegan dashi, tofu, sweet corn, edamame, bean sprouts, garlic, arugula, wood ear, nori, scallion","17","plant · spicy"],
+    ["Forest Curry","House curry in vegan dashi, fried king trumpet mushrooms, tofu, bean sprouts, wood ear, nori","18","plant"]
+  ],
+  "Rice Bowls": [
+    ["Shrimp Tempura Bowl","Rock shrimp tempura, sriracha aioli, sweet soy, aonori, scallion · spicy","12","a full meal"],
+    ["Pork Belly Bowl","Braised pork belly, house glaze, sesame, scallion","12","a full meal"],
+    ["Fried Chicken Bowl","Yume fried chicken, sriracha aioli, furikake, scallion · spicy","12","a full meal"],
+    ["Surf & Turf Bowl","Yume fried chicken and rock shrimp tempura, sriracha aioli, sweet soy, scallion · spicy","14","a full meal"]
+  ],
+  "Buns": [
+    ["Pork Belly Bun","Braised pork belly, cucumber, house glaze","8","two per order"],
+    ["Shredded Pork Bun","Pulled pork belly, cucumber, sriracha aioli · spicy","8","two per order"],
+    ["Hot Chicken Bun","Fried chicken, cucumber, garlic crunch, sesame · spicy","8","two per order"],
+    ["Glazed Beef Bun","Slow-braised beef, pickled cucumber, scallion, house glaze","8","two per order"],
+    ["Shrimp Katsu Bun","Panko shrimp patty, yuzu-kosho aioli, aonori","8","two per order"],
+    ["Crispy Tofu Bun","Tofu cutlet, cucumber, garlic crunch, sesame dressing · spicy","8","two per order"]
+  ],
+  "Small Plates": [
+    ["Salted Edamame","Steamed soybeans, flaky sea salt","7","to share"],
+    ["Fried Dumplings","Six crispy fried dumplings, pork, chicken or edamame, ponzu-chili dip · spicy","9","to share"],
+    ["Yume Fried Chicken","Japanese-style fried chicken, spicy powder, sriracha aioli, aonori · spicy","9","to share"],
+    ["Yume House Salad","Mixed leaves, cherry tomato, cucumber, sesame-ginger vinaigrette · add chicken 4","7","to share"],
+    ["Octopus Fritters","Six takoyaki, okonomi glaze, kewpie, aonori, bonito","9","to share"],
+    ["Yume Fried Cauliflower","Crispy cauliflower, spicy powder, sriracha aioli, aonori · spicy","9","to share"],
+    ["Sesame Seaweed Salad","Marinated wakame, sesame · add crab 6","7","to share"],
+    ["Crispy Squid","Fried squid, yuzu-kosho aioli","10","to share"],
+    ["Rock Shrimp Tempura","Seven rock shrimp, sriracha aioli, sweet soy, aonori · spicy","10","to share"],
+    ["Ponzu Cucumbers","Chilled cucumber, ponzu, ginger sprouts, sesame · add crab 6","7","to share"],
+    ["Tofu & Hijiki Quinoa","Tofu cutlet over hijiki quinoa salad, sesame, scallion","9","to share"],
+    ["Surf & Turf Tempura","Chicken and rock shrimp tempura, sriracha aioli, sweet soy, scallion · spicy","10","to share"]
+  ],
+  "Rice Stacks": [
+    ["Chili Tuna","Tuna tartare on crispy rice, sriracha aioli, sweet soy, sesame · spicy","14","four pieces"],
+    ["Citrus Tuna","Tuna tartare on crispy rice, yuzu aioli, aonori, sesame · spicy","14","four pieces"],
+    ["Sweet Tofu","Soy-marinated tofu pocket on crispy rice, garlic crunch, scallion · spicy","14","four pieces"]
+  ],
+  "Drinks": [
+    ["Loose-Leaf Tea","Genmaicha or hojicha","3","hot"],
+    ["Japanese Sodas","Calpico · UCC green tea · UCC milk coffee · melon or mango cream soda · Ramune","6","cold"],
+    ["Soft Drinks & Water","Coke · Diet Coke · Sprite · ginger ale · still or sparkling","3","cold"]
+  ]
+};
+const ADDONS = [["Pork belly","4"],["King trumpet mushroom","2"],["Corn · edamame","2"],["Extra noodles","3"],["Chicken","3"],["Bamboo shoots","2"],["Spinach · arugula","2"],["Extra broth","8"],["Shrimp","5"],["Wood ear mushroom","2"],["Bean sprouts · scallion","1"],["Bowl of rice","3"],["Crab meat","6"],["Tofu","2"],["Nori (3)","1"],["Black garlic oil","1"],["Wagyu beef","14"],["Jammy egg**","3"],["Truffle butter","2"],["Garlic oil","on us"]];
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+// locations
+document.getElementById('locs').innerHTML = LOCATIONS.map(l => {
+  const hours = l.hours.length
+    ? `<div class="hours">${l.hours.map(h => `<b>${esc(h[0])}</b><span>${esc(h[1])}</span>`).join('')}</div>`
+    : `<p class="note">Hours coming soon.</p>`;
+  const order = l.order
+    ? `<a class="btn" href="${esc(l.order)}" target="_blank" rel="noopener">Order ${esc(l.name)} pickup</a>`
+    : `<span class="btn soon" aria-disabled="true">Online ordering · link coming soon</span>`;
+  const phone = l.phone ? `<span class="ph">${esc(l.phone)}</span>` : '';
+  return `<article class="loc">
+    <span class="pill">${esc(l.name)}</span>
+    <h3>Yume Ramen ${esc(l.name)}</h3>
+    <p class="addr"><a href="${esc(l.map)}" target="_blank" rel="noopener">${esc(l.addr[0])}<br>${esc(l.addr[1])}</a></p>
+    ${hours}
+    ${phone}
+    <div class="row">${order}<a class="btn ghost" href="${esc(l.map)}" target="_blank" rel="noopener">Directions</a></div>
+    <p class="note">Ordering runs on ${esc(l.orderVia)}. Pay online, pick up at the counter.</p>
+  </article>`;
+}).join('');
+
+// menu tabs
+const tabs = document.getElementById('tabs'), panel = document.getElementById('panel'), addons = document.getElementById('addons');
+const keys = Object.keys(MENU);
+function show(k){
+  [...tabs.children].forEach(b => b.setAttribute('aria-selected', b.dataset.k === k));
+  panel.innerHTML = MENU[k].map(it => `<div class="item${it[4] ? ' sig' : ''}">
+    <div class="top"><span class="nm">${esc(it[0])}</span><span class="pr">${esc(it[2])}</span></div>
+    <span class="tag">${esc(it[3])}</span>
+    <span class="ds">${esc(it[1])}</span>
+  </div>`).join('');
+  addons.hidden = k !== 'Ramen';
+  try { localStorage.setItem('yume-tab', k); } catch(e){}
+}
+tabs.innerHTML = keys.map(k => `<button class="tab" role="tab" data-k="${esc(k)}" id="tab-${k.replace(/\W/g,'')}" aria-selected="false">${esc(k)}</button>`).join('');
+tabs.addEventListener('click', e => { const b = e.target.closest('.tab'); if (b) show(b.dataset.k); });
+document.getElementById('addon-grid').innerHTML = ADDONS.map(a => `<div><span>${esc(a[0])}</span><span>${esc(a[1])}</span></div>`).join('');
+let start = 'Ramen'; try { const s = localStorage.getItem('yume-tab'); if (s && MENU[s]) start = s; } catch(e){}
+show(start);
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
