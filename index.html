@@ -252,14 +252,15 @@ const LOCATIONS = [
 const MENU = {
   "Ramen": [
     ["Yume Tonkotsu","Our house bowl: creamy pork bone broth, shoyu tare, braised pork belly, jammy egg, wood ear, nori, scallion · add black garlic oil +1 · add black truffle butter & sweet corn +2","18","signature · rich pork broth",1],
-    ["Kaisen Ramen","Seafood ramen: lobster & crab broth folded with house miso, braised pork belly, shrimp, jammy egg, wood ear, nori, scallion","20","signature · seafood",1,"F"],
+    ["Kaisen Ramen","Seafood ramen: lobster & crab broth folded with house miso, braised pork belly, shrimp, jammy egg, wood ear, nori, scallion","20","signature · seafood",1],
     ["Kani Ramen","Crab ramen: lobster & crab broth folded with house miso, braised pork belly, lump crab meat, jammy egg, wood ear, nori, scallion","22","signature · crab",1,"F"],
     ["Wagyu Shabu","Wagyu beef ramen: premium wagyu, shabu-style, in a seasoned beef & dashi broth, jammy egg, bamboo, scallion","24","signature · wagyu beef",1,"F"],
-    ["Karamiso","Spicy miso ramen: house chili-miso in pork broth, braised pork belly, king trumpet mushrooms, jammy egg, wood ear, nori, scallion","18","spicy miso · pork"],
-    ["Toriton Paitan","Creamy paitan ramen: slow-simmered, silky pork & chicken broth, jammy egg, wood ear, nori, scallion · your choice of chicken or pork","18","creamy broth · chicken or pork"],
+    ["Karamiso","Spicy miso ramen: house chili-miso in pork broth, braised pork belly, jammy egg, wood ear, nori, scallion","18","spicy miso · pork"],
+    ["Toriton Paitan","Creamy paitan ramen: slow-simmered, silky pork & chicken broth, jammy egg, wood ear, nori, scallion · your choice of chicken or pork","18","creamy · chicken or pork"],
     ["Tori Shoyu","Classic soy ramen: chicken & bacon broth, soy tare, jammy egg, bamboo, nori, scallion · your choice of chicken or pork","17","soy · chicken or pork"],
     ["Tori Shio","Light sea-salt ramen: chicken & bacon broth, sea salt tare, jammy egg, bamboo, nori, scallion · your choice of chicken or pork","17","sea salt · chicken or pork"],
-    ["Yasai Karamiso","Vegetable spicy miso: chili-miso in vegetarian dashi, tofu, sweet corn, edamame, bean sprouts, garlic, spinach, wood ear, nori, scallion","17","vegetarian · spicy miso"]
+    ["Yasai Karamiso","Vegetable spicy miso: chili-miso in vegetarian dashi, tofu, sweet corn, edamame, bean sprouts, garlic, spinach, wood ear, nori, scallion","17","vegetarian · spicy miso"],
+    ["Mori Curry","Forest curry ramen: house curry in vegetarian dashi, fried king trumpet mushrooms, tofu, bean sprouts, wood ear, nori","18","vegetarian · curry",0,"F"]
   ],
   "Small Plates": [
     ["Arajio Edamame","Coarse-salt edamame: steamed soybeans, flaky sea salt","7","to share"],
@@ -298,7 +299,7 @@ const MENU = {
     ["Soft Drinks & Water","Coke · Diet Coke · Sprite · ginger ale · bottled water","2","cold"]
   ]
 };
-const ADDONS = [["Pork belly","4"],["King trumpet mushroom","2"],["Corn · edamame","2"],["Extra noodles","3"],["Chicken","3"],["Bamboo shoots","2"],["Spinach","2"],["Extra broth","8"],["Shrimp","5"],["Wood ear mushroom","2"],["Bean sprouts · scallion","1"],["Bowl of rice","3"],["Crab meat","6","F"],["Tofu","2"],["Nori (3)","1"],["Black garlic oil","1"],["Wagyu beef","14","F"],["Jammy egg**","3"],["Truffle butter & corn","2"],["Garlic oil","on us"]];
+const ADDONS = [["Pork belly","4"],["Corn · edamame","2"],["Extra noodles","3"],["Chicken","3"],["Bamboo shoots","2"],["Spinach","2"],["Extra broth","8"],["Shrimp","5"],["Wood ear mushroom","2"],["Bean sprouts · scallion","1"],["Bowl of rice","3"],["Crab meat","6","F"],["Tofu","2"],["Nori (3)","1"],["Black garlic oil","1"],["Wagyu beef","14","F"],["Jammy egg**","3"],["Truffle butter & corn","2"],["Garlic oil","on us"]];
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
