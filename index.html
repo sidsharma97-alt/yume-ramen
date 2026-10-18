@@ -92,6 +92,8 @@ section{padding-block:48px}
 
 /* menu */
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.locsw{display:flex;gap:6px;flex-wrap:wrap}
+.locsw .tab{font-size:13px;padding:6px 12px;min-height:36px}
 .tab{font-family:var(--display);font-weight:800;font-size:15px;padding:9px 16px;border-radius:999px;border:3px solid var(--line);background:transparent;color:var(--fg);cursor:pointer;min-height:44px}
 .tab[aria-selected="true"]{background:var(--yellow);color:#2A1650;border-color:#2A1650}
 .tab:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
@@ -175,7 +177,7 @@ footer a{color:var(--yellow)}
 
 <section id="menu">
   <div class="wrap">
-    <div class="sec-head"><h2>Menu</h2><div class="rule"></div><span class="eyebrow">Same menu, both locations</span></div>
+    <div class="sec-head"><h2>Menu</h2><div class="rule"></div><div class="locsw" role="group" aria-label="Choose location" id="locsw"><button class="tab" data-l="F" aria-selected="true">Freehold</button><button class="tab" data-l="Q" aria-selected="false">Quaker Bridge</button></div></div>
     <div class="tabs" role="tablist" aria-label="Menu sections" id="tabs"></div>
     <div class="panel" id="panel" role="tabpanel"></div>
     <div class="addons" id="addons">
@@ -249,56 +251,54 @@ const LOCATIONS = [
 
 const MENU = {
   "Ramen": [
-    ["The Yume","Rich pork bone broth, shoyu tare, braised pork belly, jammy egg, wood ear, nori, scallion · black garlic oil 19 · black truffle butter & sweet corn 20","18","signature · pork",1],
-    ["Seafood Ramen","Seafood broth folded with house miso, jammy egg, wood ear, nori, scallion · your choice of shrimp or crab","20","signature · seafood",1],
-    ["Wagyu Ramen","Premium wagyu beef, shabu-style, in a seasoned beef & dashi broth, jammy egg, bamboo, scallion","24","signature · beef",1],
-    ["Fire Miso","House chili-miso in pork broth, braised pork belly, king trumpet mushrooms, jammy egg, wood ear, nori, scallion","18","pork · spicy"],
-    ["Shoyu","Clear chicken broth, soy tare, jammy egg, bamboo, nori, scallion · chicken 17 · pork 18","17 / 18","chicken or pork"],
-    ["Shio","Clear chicken broth, sea salt tare, jammy egg, bamboo, nori, scallion · chicken 17 · pork 18","17 / 18","chicken or pork"],
-    ["Creamy Chicken","Slow-simmered, silky chicken broth, braised chicken, jammy egg, wood ear, nori, scallion","18","chicken"],
-    ["Garden Fire","Chili-miso in vegan dashi, tofu, sweet corn, edamame, bean sprouts, garlic, arugula, wood ear, nori, scallion","17","plant · spicy"],
-    ["Forest Curry","House curry in vegan dashi, fried king trumpet mushrooms, tofu, bean sprouts, wood ear, nori","18","plant"]
-  ],
-  "Rice Bowls": [
-    ["Shrimp Tempura Bowl","Rock shrimp tempura, sriracha aioli, sweet soy, aonori, scallion · spicy","12","a full meal"],
-    ["Pork Belly Bowl","Braised pork belly, house glaze, sesame, scallion","12","a full meal"],
-    ["Fried Chicken Bowl","Yume fried chicken, sriracha aioli, furikake, scallion · spicy","12","a full meal"],
-    ["Surf & Turf Bowl","Yume fried chicken and rock shrimp tempura, sriracha aioli, sweet soy, scallion · spicy","14","a full meal"]
-  ],
-  "Buns": [
-    ["Pork Belly Bun","Braised pork belly, cucumber, house glaze","8","two per order"],
-    ["Shredded Pork Bun","Pulled pork belly, cucumber, sriracha aioli · spicy","8","two per order"],
-    ["Hot Chicken Bun","Fried chicken, cucumber, garlic crunch, sesame · spicy","8","two per order"],
-    ["Glazed Beef Bun","Slow-braised beef, pickled cucumber, scallion, house glaze","8","two per order"],
-    ["Shrimp Katsu Bun","Panko shrimp patty, yuzu-kosho aioli, aonori","8","two per order"],
-    ["Crispy Tofu Bun","Tofu cutlet, cucumber, garlic crunch, sesame dressing · spicy","8","two per order"]
+    ["Yume Tonkotsu","Our house bowl: creamy pork bone broth, shoyu tare, braised pork belly, jammy egg, wood ear, nori, scallion · add black garlic oil +1 · add black truffle butter & sweet corn +2","18","signature · rich pork broth",1],
+    ["Kaisen Ramen","Seafood ramen: lobster & crab broth folded with house miso, braised pork belly, shrimp, jammy egg, wood ear, nori, scallion","20","signature · seafood",1,"F"],
+    ["Kani Ramen","Crab ramen: lobster & crab broth folded with house miso, braised pork belly, lump crab meat, jammy egg, wood ear, nori, scallion","22","signature · crab",1,"F"],
+    ["Wagyu Shabu","Wagyu beef ramen: premium wagyu, shabu-style, in a seasoned beef & dashi broth, jammy egg, bamboo, scallion","24","signature · wagyu beef",1,"F"],
+    ["Karamiso","Spicy miso ramen: house chili-miso in pork broth, braised pork belly, king trumpet mushrooms, jammy egg, wood ear, nori, scallion","18","spicy miso · pork"],
+    ["Toriton Paitan","Creamy paitan ramen: slow-simmered, silky pork & chicken broth, jammy egg, wood ear, nori, scallion · your choice of chicken or pork","18","creamy broth · chicken or pork"],
+    ["Tori Shoyu","Classic soy ramen: chicken & bacon broth, soy tare, jammy egg, bamboo, nori, scallion · your choice of chicken or pork","17","soy · chicken or pork"],
+    ["Tori Shio","Light sea-salt ramen: chicken & bacon broth, sea salt tare, jammy egg, bamboo, nori, scallion · your choice of chicken or pork","17","sea salt · chicken or pork"],
+    ["Yasai Karamiso","Vegetable spicy miso: chili-miso in vegetarian dashi, tofu, sweet corn, edamame, bean sprouts, garlic, spinach, wood ear, nori, scallion","17","vegetarian · spicy miso"]
   ],
   "Small Plates": [
-    ["Salted Edamame","Steamed soybeans, flaky sea salt","7","to share"],
-    ["Fried Dumplings","Six crispy fried dumplings, pork, chicken or edamame, ponzu-chili dip · spicy","9","to share"],
-    ["Yume Fried Chicken","Japanese-style fried chicken, spicy powder, sriracha aioli, aonori · spicy","9","to share"],
-    ["Yume House Salad","Mixed leaves, cherry tomato, cucumber, sesame-ginger vinaigrette · add chicken 4","7","to share"],
-    ["Octopus Fritters","Six takoyaki, okonomi glaze, kewpie, aonori, bonito","9","to share"],
-    ["Yume Fried Cauliflower","Crispy cauliflower, spicy powder, sriracha aioli, aonori · spicy","9","to share"],
-    ["Sesame Seaweed Salad","Marinated wakame, sesame · add crab 6","7","to share"],
-    ["Crispy Squid","Fried squid, yuzu-kosho aioli","10","to share"],
-    ["Rock Shrimp Tempura","Seven rock shrimp, sriracha aioli, sweet soy, aonori · spicy","10","to share"],
-    ["Ponzu Cucumbers","Chilled cucumber, ponzu, ginger sprouts, sesame · add crab 6","7","to share"],
-    ["Tofu & Hijiki Quinoa","Tofu cutlet over hijiki quinoa salad, sesame, scallion","9","to share"],
-    ["Surf & Turf Tempura","Chicken and rock shrimp tempura, sriracha aioli, sweet soy, scallion · spicy","10","to share"]
+    ["Arajio Edamame","Coarse-salt edamame: steamed soybeans, flaky sea salt","7","to share"],
+    ["Kyuri Ponzu","Ponzu cucumbers: chilled cucumber, ponzu, ginger sprouts, sesame","7","to share"],
+    ["Yume Salad","House salad: mixed leaves, cherry tomato, cucumber, sesame-ginger vinaigrette · add chicken 4","7","to share",0,"F"],
+    ["Goma Kaiso","Sesame seaweed salad: marinated wakame, sesame","7","to share"],
+    ["Kinua Tofu","Tofu & hijiki quinoa: tofu cutlet over hijiki quinoa salad, sesame, scallion","9","to share",0,"F"],
+    ["Karikari Gyoza","Crispy fried dumplings (six): pork or edamame, ponzu-chili dip · spicy","9","to share"],
+    ["Osaka Tako","Octopus fritters (six), Osaka street-style: okonomi glaze, kewpie, aonori, bonito","9","to share",0,"F"],
+    ["Yume Karaage","Japanese fried chicken: spicy powder, sriracha aioli, aonori · spicy","10","to share"],
+    ["Ebi Tempura","Rock shrimp tempura (seven): sriracha aioli, sweet soy, aonori · spicy","10","to share"],
+    ["Ika Furai","Crispy fried squid: yuzu-kosho aioli","10","to share",0,"F"],
+    ["Tori Ebi Tempura","Surf & turf tempura: chicken and rock shrimp, sriracha aioli, sweet soy, scallion · spicy","12","to share"]
   ],
-  "Rice Stacks": [
-    ["Chili Tuna","Tuna tartare on crispy rice, sriracha aioli, sweet soy, sesame · spicy","14","four pieces"],
-    ["Citrus Tuna","Tuna tartare on crispy rice, yuzu aioli, aonori, sesame · spicy","14","four pieces"],
-    ["Sweet Tofu","Soy-marinated tofu pocket on crispy rice, garlic crunch, scallion · spicy","14","four pieces"]
+  "Bao Buns": [
+    ["Buta Bao","Pork belly bun: minced pork belly, cucumber, house glaze","9","two per order"],
+    ["Spicy Buta Bao","Shredded pork bun: pulled pork belly, cucumber, sriracha aioli · spicy","9","two per order"],
+    ["Karaage Bao","Hot chicken bun: fried chicken, cucumber, garlic crunch, sesame · spicy","9","two per order"],
+    ["Ebi Panko Bao","Shrimp katsu bun: panko shrimp patty, yuzu-kosho aioli, aonori","9","two per order"],
+    ["Tofu Katsu Bao","Crispy tofu bun: tofu cutlet, cucumber, garlic crunch, sesame dressing · spicy","9","two per order"]
+  ],
+  "Crispy Rice": [
+    ["Spicy Maguro","Spicy tuna crispy rice: tuna tartare, sriracha aioli, sweet soy, sesame · spicy","12","four pieces",0,"F"],
+    ["Yuzu Maguro","Citrus tuna crispy rice: tuna tartare, yuzu aioli, aonori, sesame · spicy","12","four pieces",0,"F"],
+    ["Kitsune Tofu","Sweet tofu crispy rice: soy-marinated tofu pocket, garlic crunch, scallion · spicy","12","four pieces",0,"F"]
+  ],
+  "Donburi": [
+    ["Ebi Ten Don","Shrimp tempura rice bowl: rock shrimp tempura, sriracha aioli, sweet soy, aonori, scallion · spicy","15","rice bowl · a full meal"],
+    ["Buta Don","Pork belly rice bowl: braised pork belly, house glaze, sesame, scallion","15","rice bowl · a full meal"],
+    ["Tori Don","Fried chicken rice bowl: Yume karaage, sriracha aioli, furikake, scallion · spicy","15","rice bowl · a full meal"],
+    ["Tori Ebi Don","Surf & turf rice bowl: Yume karaage and rock shrimp tempura, sriracha aioli, sweet soy, scallion · spicy","15","rice bowl · a full meal"]
   ],
   "Drinks": [
-    ["Loose-Leaf Tea","Genmaicha or hojicha","3","hot"],
+    ["Ocha","Loose-leaf tea: genmaicha or hojicha","3","hot"],
     ["Japanese Sodas","Calpico · UCC green tea · UCC milk coffee · melon or mango cream soda · Ramune","6","cold"],
-    ["Soft Drinks & Water","Coke · Diet Coke · Sprite · ginger ale · still or sparkling","3","cold"]
+    ["Soft Drinks & Water","Coke · Diet Coke · Sprite · ginger ale · bottled water","2","cold"]
   ]
 };
-const ADDONS = [["Pork belly","4"],["King trumpet mushroom","2"],["Corn · edamame","2"],["Extra noodles","3"],["Chicken","3"],["Bamboo shoots","2"],["Spinach · arugula","2"],["Extra broth","8"],["Shrimp","5"],["Wood ear mushroom","2"],["Bean sprouts · scallion","1"],["Bowl of rice","3"],["Crab meat","6"],["Tofu","2"],["Nori (3)","1"],["Black garlic oil","1"],["Wagyu beef","14"],["Jammy egg**","3"],["Truffle butter","2"],["Garlic oil","on us"]];
+const ADDONS = [["Pork belly","4"],["King trumpet mushroom","2"],["Corn · edamame","2"],["Extra noodles","3"],["Chicken","3"],["Bamboo shoots","2"],["Spinach","2"],["Extra broth","8"],["Shrimp","5"],["Wood ear mushroom","2"],["Bean sprouts · scallion","1"],["Bowl of rice","3"],["Crab meat","6","F"],["Tofu","2"],["Nori (3)","1"],["Black garlic oil","1"],["Wagyu beef","14","F"],["Jammy egg**","3"],["Truffle butter & corn","2"],["Garlic oil","on us"]];
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
@@ -322,12 +322,17 @@ document.getElementById('locs').innerHTML = LOCATIONS.map(l => {
   </article>`;
 }).join('');
 
-// menu tabs
-const tabs = document.getElementById('tabs'), panel = document.getElementById('panel'), addons = document.getElementById('addons');
-const keys = Object.keys(MENU);
+// menu tabs + location switch (items/add-ons marked "F" are Freehold only)
+const tabs = document.getElementById('tabs'), panel = document.getElementById('panel'), addons = document.getElementById('addons'), locsw = document.getElementById('locsw');
+let loc = 'F'; try { const l = localStorage.getItem('yume-loc'); if (l === 'F' || l === 'Q') loc = l; } catch(e){}
+const avail = x => loc === 'F' || x[5] !== 'F';
+const keys = () => Object.keys(MENU).filter(k => MENU[k].some(avail));
+let cur = 'Ramen';
 function show(k){
+  if (!MENU[k] || !MENU[k].some(avail)) k = 'Ramen';
+  cur = k;
   [...tabs.children].forEach(b => b.setAttribute('aria-selected', b.dataset.k === k));
-  panel.innerHTML = MENU[k].map(it => `<div class="item${it[4] ? ' sig' : ''}">
+  panel.innerHTML = MENU[k].filter(avail).map(it => `<div class="item${it[4] ? ' sig' : ''}">
     <div class="top"><span class="nm">${esc(it[0])}</span><span class="pr">${esc(it[2])}</span></div>
     <span class="tag">${esc(it[3])}</span>
     <span class="ds">${esc(it[1])}</span>
@@ -335,11 +340,16 @@ function show(k){
   addons.hidden = k !== 'Ramen';
   try { localStorage.setItem('yume-tab', k); } catch(e){}
 }
-tabs.innerHTML = keys.map(k => `<button class="tab" role="tab" data-k="${esc(k)}" id="tab-${k.replace(/\W/g,'')}" aria-selected="false">${esc(k)}</button>`).join('');
+function render(){
+  [...locsw.children].forEach(b => b.setAttribute('aria-selected', b.dataset.l === loc));
+  tabs.innerHTML = keys().map(k => `<button class="tab" role="tab" data-k="${esc(k)}" id="tab-${k.replace(/\W/g,'')}" aria-selected="false">${esc(k)}</button>`).join('');
+  document.getElementById('addon-grid').innerHTML = ADDONS.filter(a => loc === 'F' || a[2] !== 'F').map(a => `<div><span>${esc(a[0])}</span><span>${esc(a[1])}</span></div>`).join('');
+  show(cur);
+}
 tabs.addEventListener('click', e => { const b = e.target.closest('.tab'); if (b) show(b.dataset.k); });
-document.getElementById('addon-grid').innerHTML = ADDONS.map(a => `<div><span>${esc(a[0])}</span><span>${esc(a[1])}</span></div>`).join('');
-let start = 'Ramen'; try { const s = localStorage.getItem('yume-tab'); if (s && MENU[s]) start = s; } catch(e){}
-show(start);
+locsw.addEventListener('click', e => { const b = e.target.closest('.tab'); if (!b) return; loc = b.dataset.l; try { localStorage.setItem('yume-loc', loc); } catch(e){} render(); });
+try { const s0 = localStorage.getItem('yume-tab'); if (s0 && MENU[s0]) cur = s0; } catch(e){}
+render();
 document.getElementById('yr').textContent = new Date().getFullYear();
 </script>
 
